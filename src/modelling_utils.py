@@ -75,6 +75,7 @@ def plot_time_series_split(train, test, cutoff_date):
         plt.xlabel('Date', loc='left', labelpad=25)
         plt.ylabel('Sales', loc='top', labelpad=25)
         plt.xticks(rotation=0)
+        
         plt.legend(loc='upper left')
         plt.show()
     
