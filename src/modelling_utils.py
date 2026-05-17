@@ -66,6 +66,7 @@ def plot_time_series_split(train, test, cutoff_date):
         figure, ax = plt.subplots(figsize=(20, 7))
 
         train.plot(ax=ax, label='Train', y='sales')
+        
         test.plot(ax=ax, label='Test', y='sales')
 
         ax.axvline(cutoff_date, color='black', ls='--')
