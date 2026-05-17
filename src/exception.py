@@ -12,6 +12,7 @@ import sys
 
 def detailed_error_msg(error, error_details: sys):
     '''
+    
     Generate a detailed error message including file name, line number, and error message.
     
     Args:
