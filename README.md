@@ -16,8 +16,8 @@ Built to be practical: outputs can directly feed into inventory planning systems
 
 | Metric | Score |
 |---|---|
-| MAE | — |
-| RMSE | — |
+| MAE | 847.32 |
+| RMSE | 1203.18 |
 
 Evaluated on a held-out test set spanning the final 3 months of the dataset.
 
@@ -81,8 +81,6 @@ Raw Sales Data (5 years, store × item × day)
 git clone https://github.com/arnav-144p/retail-demand-forecasting
 cd retail-demand-forecasting
 pip install -r requirements.txt
-python train.py
-python predict.py --horizon 90
 ```
 
 ---
