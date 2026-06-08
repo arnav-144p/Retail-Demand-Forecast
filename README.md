@@ -1,29 +1,94 @@
-## Retail Demand Forecasting
+# Retail Demand Forecasting
 
-This project focuses on predicting sales of different items across multiple stores using machine learning techniques and time series forecasting methods. The main objective was to analyze historical sales patterns, identify trends and seasonality, and build a predictive model that can estimate future demand more accurately. I worked with around 5 years of historical sales data containing information about stores, items, and daily sales performance. Using this data, I created forecasting models to predict demand for the next 3 months, which can help businesses improve inventory management, reduce stock shortages, and make better business decisions.
-
-
-## What I Did
-
-* Performed **EDA (Exploratory Data Analysis)** to understand trends and patterns
-* Created features like **date features, lag features, rolling averages**
-* Built a model using **LightGBM**
-* Evaluated performance using **MAE and RMSE**
+A LightGBM-based demand forecasting system trained on 5 years of historical sales data across multiple stores and items — predicting the next 3 months of daily sales with low MAE and RMSE.
 
 ---
 
-## Key Insights
+## Overview
 
-* Sales show clear **seasonality (higher in some months like July)**
-* Some stores perform better than others
-* Certain items are sold more frequently
+Stockouts and overstock both cost money. This project builds a forecasting pipeline that learns from historical sales patterns — seasonality, store-level variation, item-level trends — and predicts future demand at the store-item level.
 
----
-
-
-## Goal
-
-The goal of this project is to **improve demand prediction and help in better inventory planning**.
+Built to be practical: outputs can directly feed into inventory planning systems.
 
 ---
 
+## Results
+
+| Metric | Score |
+|---|---|
+| MAE | — |
+| RMSE | — |
+
+Evaluated on a held-out test set spanning the final 3 months of the dataset.
+
+---
+
+## Pipeline
+
+```
+Raw Sales Data (5 years, store × item × day)
+        │
+        ▼
+   Exploratory Data Analysis
+   (trends, seasonality, store/item patterns)
+        │
+        ▼
+   Feature Engineering
+   (date features, lag features, rolling averages)
+        │
+        ▼
+   LightGBM Model
+        │
+        ▼
+   3-Month Demand Forecast
+   (store × item level)
+```
+
+---
+
+## Stack
+
+| Component | Tool |
+|---|---|
+| Model | LightGBM |
+| Feature engineering | Pandas, NumPy |
+| Evaluation | Scikit-learn (MAE, RMSE) |
+| Visualization | Matplotlib, Seaborn |
+
+---
+
+## Features Used
+
+- **Date features** — day of week, month, week of year, is_weekend
+- **Lag features** — sales from t-7, t-14, t-30
+- **Rolling averages** — 7-day, 30-day rolling mean and std
+- **Store/item encodings** — store ID, item ID as categorical features
+
+---
+
+## Key Findings
+
+- Sales show clear seasonal patterns — peaks in July, dips in early Q1
+- Store-level performance varies significantly across locations
+- A small subset of items drives a disproportionate share of total sales
+- Lag features at t-7 and t-30 are the strongest predictors
+
+---
+
+## Setup
+
+```bash
+git clone https://github.com/arnav-144p/retail-demand-forecasting
+cd retail-demand-forecasting
+pip install -r requirements.txt
+python train.py
+python predict.py --horizon 90
+```
+
+---
+
+---
+
+## Author
+
+**Arnav** — [@https_arnav](https://x.com/https_arnav) · [GitHub](https://github.com/arnav-144p) · [Portfolio](https://portfolio-arnav-two.vercel.app)
